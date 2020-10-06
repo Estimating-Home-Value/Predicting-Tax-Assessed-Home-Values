@@ -31,3 +31,6 @@ def rfe(X_train_scaled, y_train, k):
     mask = rfe.support_
     rfe_features = X_train_scaled.loc[:,mask].columns.tolist()
     return rfe_features
+
+def return_3():
+    return 3
