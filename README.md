@@ -56,17 +56,13 @@ As with every project you do, you should have an excellent README.md file docume
 | id | Unique id for each house |
 | bathroomcnt | Number of Bathrooms; Includes halfbaths as 0.5 |
 | bedroomcnt | Number of Bedrooms |
-| calculatedbathnbr | Unknown; but appears to be just a repeat of bathroomcnt |
-| calculatedfinishedsquarefeet | Renamed to squarefeet; Total square feet of home; doesn't include property square feet |
+| calculatedbathnbr | Unknown |
+| calculatedfinishedsquarefeet | Total square feet of home; doesn't include property square feet |
 | fullbathcnt | Number of full bathrooms |
 | latitude | The latitude of the property
 | longitude | The longitude of the property |
 | yearbuilt | The year the house was built |
 | taxvaluedollarcnt | The tax accessed value of the property in USD. |
-| taxrate | Calculated column of (`taxamount`(*from SQL database*)/ `taxvaluedollarcnt`) * 100 |
-| beds_per_bath | Calculated column of `bedroomcnt` / `bathroomcnt`; Includes half baths as 0.5 |
-| baths_per_bed | Calculated column of `bathroomcnt` / `bedroomcnt` |
-| sqft_per_bed_and_bath | Calculated column of `squarefeet` / (`bedroomcnt` + `bathroomcnt`) |
 
 ## Key Findings and Takeaways
 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
