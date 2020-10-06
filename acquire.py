@@ -19,7 +19,7 @@ def add_county_column(row):
 def acquire_cache_data():
     if not path.isfile('zillow.csv'):
         query = '''
-        SELECT p.calculatefinishedsquarefeet, p.bathroomcnt, p.bedroomcnt, p.taxvaluedollarcnt
+        SELECT p.calculatedfinishedsquarefeet, p.bathroomcnt, p.bedroomcnt, p.taxvaluedollarcnt
         FROM properties_2017 AS p
         JOIN predictions_2017 using (parcelid) AS pr
         WHERE p.propertylandusetypeid IN (261, 262, 263, 264, 266, 268, 273, 275, 276, 279)
