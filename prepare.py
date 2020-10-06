@@ -196,10 +196,7 @@ def quantile_scaler(train, validate, test):
     return scaler, train_scaled, validate_scaled, test_scaled
 
 def prep_zillow(zillow):
-    """
-    Accpet the zillow dataframe acquired by function acquire_cache_data in acquire.py
-    Return three splited dataframes scaled by min_max scaler: train_scaled, validate_scaled, test_scaled
-    """
+ 
     mask_bathr = (zillow.bathroomcnt == 0)
     mask_bedr = (zillow.bedroomcnt == 0)
     mask_sf = zillow.calculatedfinishedsquarefeet.isnull()
