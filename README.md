@@ -22,10 +22,11 @@ You are a junior data scientist on the Zillow data science team and recieve the 
 You wonder how you can recieve an email from the entire data science team at once, but figure it's best to get started on the project.
 
 ## Goals
-1. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-2. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-3. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-4. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+1. Identify significant drivers of tax assessment value.  
+2. Describe and visualize the distribution of tax rates for each county. 
+3. Produce a model that has a smaller root mean squared error than a model with no features based on the mean tax value. 
+4. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+5. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 ### Specification
 #### Audience
@@ -59,14 +60,37 @@ As with every project you do, you should have an excellent README.md file docume
 | bedroomcnt | Number of Bedrooms |
 | calculatedbathnbr | Unknown |
 | calculatedfinishedsquarefeet | Total square feet of home; doesn't include property square feet |
+| fips | Federal Information Processing System codes used to identify unique geographical areas | 
 | fullbathcnt | Number of full bathrooms |
 | latitude | The latitude of the property
 | longitude | The longitude of the property |
 | yearbuilt | The year the house was built |
 | taxvaluedollarcnt | The tax accessed value of the property in USD. |
+| transactiondate | Four digit year, two digit month, two digit date | 
+
+## Data Validation
+The following considerations were taken with the data:
+1. Initial SQL query produced 20,364 records that met the following requirements:
+    * Transaction Date between 2017-05-01 and 2017-06-30
+    * Property classified as one of the following Types:
+        * Single Family Residential
+        * Rural Residence
+        * Mobile Home
+        * Townhouse
+        * Condominium
+        * Row House
+        * Bungalow
+        * Manufactured, Modular, Prefabricated Homes
+        * Patio Home
+        * Inferred Single Family Residence
+2. Records containing 0 bathrooms, 0 bedrooms, or null square footage were dropped
+3. Duplicate records were dropped. These entries may represent "back-to-back" closings on the same day between three parties.
 
 ## Key Findings and Takeaways
-1. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+1. All properties containing FIPS data are located in one of three Californian counties:
+    * Los Angeles County
+    * Orange County
+    * Ventura County
 2. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
 3. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
 4. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
