@@ -21,7 +21,7 @@ def acquire_cache_data():
         query = '''
         SELECT p.calculatedfinishedsquarefeet, p.bathroomcnt, p.bedroomcnt, p.taxvaluedollarcnt
         FROM properties_2017 AS p
-        JOIN predictions_2017 using (parcelid) AS pr
+        JOIN predictions_2017 AS pr USING (parcelid) 
         WHERE p.propertylandusetypeid IN (261, 262, 263, 264, 266, 268, 273, 275, 276, 279)
         AND pr.transactiondate between '2017-05-01' AND '2017-06-30'
         '''
