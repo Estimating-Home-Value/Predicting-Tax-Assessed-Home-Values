@@ -19,7 +19,10 @@ def add_county_column(row):
 def acquire_cache_data():
     if not path.isfile('zillow.csv'):
         query = '''
-        SELECT * FROM properties_2017
+        SELECT * FROM properties_2017 as p
+        JOIN predictions_2017 using (parcelid) as pr
+        WHERE p.propertylandusetypeid IN (261, 262, 263, 264, 266, 268, 273, 275, 276, 279)
+        AND pr.transactiondate between '2017-05-01' AND '2017-06-30'
         '''
         url = get_connection('zillow')
         zillow = pd.read_sql(query, url, index_col='id')
