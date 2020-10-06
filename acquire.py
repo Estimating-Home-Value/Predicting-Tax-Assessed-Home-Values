@@ -26,8 +26,7 @@ def acquire_cache_data():
         AND pr.transactiondate between '2017-05-01' AND '2017-06-30'
         '''
         url = get_connection('zillow')
-        zillow = pd.read_sql(query, url)
-        zillow.drop(columns=['Unnamed: 0'], inplace=True)
+        zillow = pd.read_sql(query, url, index_col=0)
         zillow.to_csv('zillow.csv')
     zillow = pd.read_csv('zillow.csv')
 #   zillow['County'] = zillow.apply(lambda row: add_county_column(row), axis = 1)
