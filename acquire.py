@@ -29,11 +29,11 @@ def acquire_cache_data():
         zillow = pd.read_sql(query, url)
         zillow.to_csv('zillow.csv')
     zillow = pd.read_csv('zillow.csv')
-    zillow['County'] = zillow.apply(lambda row: add_county_column(row), axis = 1)
+#   zillow['County'] = zillow.apply(lambda row: add_county_column(row), axis = 1)
     return zillow
 
 def acquire_only(query):
     url = get_connection('zillow')
     zillow = pd.read_sql(query, url, index_col='id')
-    zillow['County'] = zillow.apply(lambda row: add_county_column(row), axis = 1)
+#   zillow['County'] = zillow.apply(lambda row: add_county_column(row), axis = 1)
     return zillow
