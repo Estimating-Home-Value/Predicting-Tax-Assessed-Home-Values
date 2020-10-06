@@ -194,3 +194,18 @@ def quantile_scaler(train, validate, test):
     validate_scaled = pd.DataFrame(scaler.transform(validate), columns=validate.columns.values).set_index([validate.index.values])
     test_scaled = pd.DataFrame(scaler.transform(test), columns=test.columns.values).set_index([test.index.values])
     return scaler, train_scaled, validate_scaled, test_scaled
+
+def prep_zillow(zillow):
+    """
+    Accpet the zillow dataframe acquired by function acquire_cache_data in acquire.py
+    Return three splited dataframes scaled by min_max scaler: train_scaled, validate_scaled, test_scaled
+    """
+    mask_bathr = (zillow.bathroomcnt == 0)
+    mask_bedr = (zillow.bedroomcnt == 0)
+    mask_sf = zillow.calculatedfinishedsquarefeet.isnull()
+    mask = mask_bathr | mask_bedr | mask_sf
+    zillow = zillow[-mask]
+    zillow = zillow.drop_duplicates(keep='first', ignore_index=True)
+    train, validate, test = split_my_data(zillow, pct=0.1)
+    scaler, train_scaled, validate_scaled, test_scaled = min_max_scaler(train, validate, test)
+    return train_scaled, validate_scaled, test_scaled
