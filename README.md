@@ -56,19 +56,13 @@ As with every project you do, you should have an excellent README.md file docume
 | id | Unique id for each house |
 | bathroomcnt | Number of Bathrooms; Includes halfbaths as 0.5 |
 | bedroomcnt | Number of Bedrooms |
-| calculatedbathnbr | Unknown; but appears to be just a repeat of bathroomcnt |
-| calculatedfinishedsquarefeet | Renamed to squarefeet; Total square feet of home; doesn't include property square feet |
+| calculatedbathnbr | Unknown |
+| calculatedfinishedsquarefeet | Total square feet of home; doesn't include property square feet |
 | fullbathcnt | Number of full bathrooms |
 | latitude | The latitude of the property
 | longitude | The longitude of the property |
 | yearbuilt | The year the house was built |
 | taxvaluedollarcnt | The tax accessed value of the property in USD. |
-| taxrate | Calculated column of (`taxamount`(*from SQL database*)/ `taxvaluedollarcnt`) * 100 |
-| beds_per_bath | Calculated column of `bedroomcnt` / `bathroomcnt`; Includes half baths as 0.5 |
-| baths_per_bed | Calculated column of `bathroomcnt` / `bedroomcnt` |
-| sqft_per_bed_and_bath | Calculated column of `squarefeet` / (`bedroomcnt` + `bathroomcnt`) |
-
-*All above columns were chosen based on the specifications from the team and their lack of null values. While multiple coloumns held information about the beds, baths, and sqft; these columns had less then 10% null values for the team specifications*
 
 ## Key Findings and Takeaways
 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -88,13 +82,9 @@ As with every project you do, you should have an excellent README.md file docume
         * `password` - your password
         * `host` - the host address for the MySQL Server
 
-* As long as you have the env file then `acquire_cache_data()` will do the rest on it's own.
-
 ### prep.py
-* `acquire_and_clean_data()` will run the acquire function so you only need to run this one to get the data and have it cleaned at further stages of the pipeline.
+* 
 
 ### model.py
-* This file has three functions
-    * `get_model()` returns a linear regression model that has been fit on the training data
-    * `make_predictions()` takes in the linear model object, a series containing the target values, and a dataframe containing the features and  returns a dataframe with the actual values, baseline predictions, and model predictions
-    * `evaluate_model()` takes in the predictions dataframe from `make_predictions()` and returns the RMSE for each along with whether the model performed better.
+* This file has n functions
+    * 

@@ -19,17 +19,21 @@ def add_county_column(row):
 def acquire_cache_data():
     if not path.isfile('zillow.csv'):
         query = '''
-        SELECT * FROM properties_2017
+        SELECT p.calculatedfinishedsquarefeet, p.bathroomcnt, p.bedroomcnt, p.taxvaluedollarcnt
+        FROM properties_2017 AS p
+        JOIN predictions_2017 AS pr USING (parcelid) 
+        WHERE p.propertylandusetypeid IN (261, 262, 263, 264, 266, 268, 273, 275, 276, 279)
+        AND pr.transactiondate between '2017-05-01' AND '2017-06-30'
         '''
         url = get_connection('zillow')
-        zillow = pd.read_sql(query, url, index_col='id')
+        zillow = pd.read_sql(query, url, index_col=0)
         zillow.to_csv('zillow.csv')
     zillow = pd.read_csv('zillow.csv')
-    zillow['County'] = zillow.apply(lambda row: add_county_column(row), axis = 1)
+#   zillow['County'] = zillow.apply(lambda row: add_county_column(row), axis = 1)
     return zillow
 
 def acquire_only(query):
     url = get_connection('zillow')
     zillow = pd.read_sql(query, url, index_col='id')
-    zillow['County'] = zillow.apply(lambda row: add_county_column(row), axis = 1)
+#   zillow['County'] = zillow.apply(lambda row: add_county_column(row), axis = 1)
     return zillow
