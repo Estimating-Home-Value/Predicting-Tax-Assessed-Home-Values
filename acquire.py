@@ -56,3 +56,20 @@ def acquire_cache_tax_data():
     zillow['County'] = zillow.apply(lambda row: add_county_column(row), axis = 1)
     zillow.drop(columns=['fips'], inplace=True)
     return zillow
+
+def get_zillow_data(iteration):
+    zillow_csv = 'zillow_' + iteration + '.csv'
+    filename = zillow_csv
+    query = """
+        SELECT *
+        FROM properties_2017 AS p
+        JOIN predictions_2017 AS pr USING (parcelid) 
+        WHERE p.propertylandusetypeid IN (261, 262, 263, 264, 266, 268, 273, 275, 276, 279)
+        AND pr.transactiondate between '2017-05-01' AND '2017-06-30'
+        """
+    if os.path.isfile(filename):
+        return pd.read_csv(filename, index_col=0)
+    else:
+        df = pd.read_sql(query, acquire.get_connection('zillow'))
+        df.to_csv(filename)
+        return df
