@@ -1,6 +1,7 @@
 import env
 import pandas as pd 
 from os import path 
+import os
 
 def get_connection(database):
     '''
