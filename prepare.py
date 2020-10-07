@@ -210,20 +210,3 @@ def prep_zillow(zillow):
     train, validate, test = split_my_data(zillow, pct=0.1)
     scaler, train_scaled, validate_scaled, test_scaled = min_max_scaler(train, validate, test)
     return train_scaled, validate_scaled, test_scaled
-
-def get_zillow_data(iteration):
-    zillow_csv = 'zillow_' + iteration + '.csv'
-    filename = zillow_csv
-    query = """
-        SELECT *
-        FROM properties_2017 AS p
-        JOIN predictions_2017 AS pr USING (parcelid) 
-        WHERE p.propertylandusetypeid IN (261, 262, 263, 264, 266, 268, 273, 275, 276, 279)
-        AND pr.transactiondate between '2017-05-01' AND '2017-06-30'
-        """
-    if os.path.isfile(filename):
-        return pd.read_csv(filename, index_col=0)
-    else:
-        df = pd.read_sql(query, acquire.get_connection('zillow'))
-        df.to_csv(filename)
-        return df
