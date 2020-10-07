@@ -71,6 +71,6 @@ def get_zillow_data(iteration):
     if os.path.isfile(filename):
         return pd.read_csv(filename, index_col=0)
     else:
-        df = pd.read_sql(query, acquire.get_connection('zillow'))
+        df = pd.read_sql(query, get_connection('zillow'))
         df.to_csv(filename)
         return df
