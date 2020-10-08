@@ -118,6 +118,7 @@ The following considerations were taken with the data:
 5. A linear regression model with 3rd degree polynomial features performed the best out of the algorithms tested. When compared to a baseline model of no features based on the mean tax assessed property value, the model had 56% of the root mean squared error the baseline model had. 
 6. For future improvements, additional exploration of features could be performed. Binning categorical features with a large number of unique values into relevant supercategories could prove useful. Additional changes to hyperparameters may also improve performance.
 7. The model performs best on midrange homes, but has the weakest performance on low value properties. This is likely due to the influence of high value outliers. The model could be improved on its performance on lower value properties (which also make up a larger proportion of the overall property distribution relative to the higher value properties) by removing outliers or using a scaling method that is more robust to outliers.
+8. Some limitations of the model are based on the use of tax valuation itself. While tax value is updated on a yearly basis in the area, California Proposition 13 limits increases to the valuation of a property to 2% per year. If actual home values based on sales and purchases are trending higher at faster than 2% per year, the data will be unable to accuractely capture the increased property value.
 
 ## How to Reproduce
 
