@@ -25,8 +25,8 @@ You wonder how you can recieve an email from the entire data science team at onc
 1. Identify significant drivers of tax assessment value.  
 2. Describe and visualize the distribution of tax rates for each county. 
 3. Produce a model that has a smaller root mean squared error than a model with no features based on the mean tax value. 
-4. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-5. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+4. Identify strengths and weaknesses of final model.
+5. Detail recommendations for future improvement.
 
 ### Specification
 #### Audience
@@ -55,18 +55,34 @@ As with every project you do, you should have an excellent README.md file docume
 
 | Column | Description |
 | --- | ---|
-| id | Unique id for each house |
+| id | Autoincremented unique index id for each property |
 | bathroomcnt | Number of Bathrooms; Includes halfbaths as 0.5 |
 | bedroomcnt | Number of Bedrooms |
-| calculatedbathnbr | Unknown |
+| calculatedbathnbr | Precise meaning unknown, but appears to be redundant with bathroomcnt and bedroomcnt |
 | calculatedfinishedsquarefeet | Total square feet of home; doesn't include property square feet |
+| finishedsquarefeet12| Unknown, but appears to be redundant with calculatedfinishedsquarefeet | 
 | fips | Federal Information Processing System codes used to identify unique geographical areas | 
 | fullbathcnt | Number of full bathrooms |
 | latitude | The latitude of the property
 | longitude | The longitude of the property |
+| lotsizesquarefeet| The size of the total property lot |
+| propertycountylandusecode | Unknown, but represents categorical government code |
+| propertylandusetypeid |  Categorical variable describing the general type of property |
+| rawcensustractandblock | Government id for each property linked to geographic location |
+| regionidcity | Categorical variable identifying geographic location |
+| regionidcounty | Categorical variable identifying geographic location |
+| roomcnt | Number of rooms |
 | yearbuilt | The year the house was built |
-| taxvaluedollarcnt | The tax accessed value of the property in USD. |
+| structuretaxvaluedollarcnt | The tax assessed value of only the property structure in USD | 
+| assessmentyear | Year that the tax value was assessed |
+| landtaxvaluedollarcnt | The tax assessed value of only the land lot for the property |
+| taxamount | The amount paid in taxes by the landowner in USD |
+| taxvaluedollarcnt | The tax accessed value of the property in USD |
+| censustractandblock | Redundant with rarcensustractandblock |
+| logerror | Unknown |
 | transactiondate | Four digit year, two digit month, two digit date | 
+
+Additional columns were present in the zillow database but had greater than 20% null values and were dropped during initial consideration. 
 
 ## Data Validation
 The following considerations were taken with the data:
@@ -91,9 +107,16 @@ The following considerations were taken with the data:
     * Los Angeles County
     * Orange County
     * Ventura County
-2. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-3. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-4. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+2. Los Angeles County has both the highest mean tax rate and the highest range of tax rates. 
+3. Los Angeles County has the lowest tax assessed property values. 
+4. The strongest features identified by recursive feature elimination using linear regression are:
+    * bedroomcnt
+    * calculatedfinishedsquarefeet
+    * latitude
+    * fips
+5. A linear regression model with 3rd degree polynomial features performed the best out of the algorithms tested. When compared to a baseline model of no features based on the mean tax assessed property value, the model had 56% of the root mean squared error the baseline model had. 
+6. For future improvements, additional exploration of features could be performed. Binning categorical features with a large number of unique values into relevant supercategories could prove useful. Additional changes to hyperparameters may also improve performance.
+7. The model performs best on midrange homes, but has the weakest performance on low value properties. This is likely due to the influence of high value outliers. The model could be improved on its performance on lower value properties (which also make up a larger proportion of the overall property distribution relative to the higher value properties) by removing outliers or using a scaling method that is more robust to outliers.
 
 ## How to Reproduce
 
@@ -107,9 +130,8 @@ The following considerations were taken with the data:
         * `password` - your password
         * `host` - the host address for the MySQL Server
 
-### prep.py
-* 
-
-### model.py
-* This file has n functions
-    * 
+### prepare.py
+### features.py
+* These models will perform all functions successfully without any changes needed. Each function is specific to the task developed during the data science pipeline.
+### model.ipynb
+* There are several specific functions embedded in the model.ipynb. They will need to be copied to a .py file in order to be used elsewhere.
