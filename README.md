@@ -1,5 +1,4 @@
 # What Drives Tax Assessed Home Values
-# Delete later
 
 View the google slide presentation here: [**Drivers for Tax Evaluation**](address)
 
