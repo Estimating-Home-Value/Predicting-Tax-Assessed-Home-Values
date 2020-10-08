@@ -77,7 +77,7 @@ As with every project you do, you should have an excellent README.md file docume
 | landtaxvaluedollarcnt | The tax assessed value of only the land lot for the property |
 | taxamount | The amount paid in taxes by the landowner in USD |
 | taxvaluedollarcnt | The tax accessed value of the property in USD |
-| censustractandblock | Redundant with rarcensustractandblock |
+| censustractandblock | Redundant with rawcensustractandblock |
 | logerror | Unknown |
 | transactiondate | Four digit year, two digit month, two digit date | 
 | taxrate | Rounded derived value by dividing the taxamount by the taxvaluedollarcnt and multiplying by 100 |
