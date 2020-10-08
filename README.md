@@ -81,6 +81,8 @@ As with every project you do, you should have an excellent README.md file docume
 | censustractandblock | Redundant with rarcensustractandblock |
 | logerror | Unknown |
 | transactiondate | Four digit year, two digit month, two digit date | 
+| taxrate | Rounded derived value by dividing the taxamount by the taxvaluedollarcnt and multiplying by 100 |
+| County | County the property is located in | 
 
 Additional columns were present in the zillow database but had greater than 20% null values and were dropped during initial consideration. 
 
@@ -113,7 +115,7 @@ The following considerations were taken with the data:
     * bedroomcnt
     * calculatedfinishedsquarefeet
     * latitude
-    * fips
+    * fips (split into dummy variables for Los Angeles County, Orange County, and Ventura County)
 5. A linear regression model with 3rd degree polynomial features performed the best out of the algorithms tested. When compared to a baseline model of no features based on the mean tax assessed property value, the model had 56% of the root mean squared error the baseline model had. 
 6. For future improvements, additional exploration of features could be performed. Binning categorical features with a large number of unique values into relevant supercategories could prove useful. Additional changes to hyperparameters may also improve performance.
 7. The model performs best on midrange homes, but has the weakest performance on low value properties. This is likely due to the influence of high value outliers. The model could be improved on its performance on lower value properties (which also make up a larger proportion of the overall property distribution relative to the higher value properties) by removing outliers or using a scaling method that is more robust to outliers.
