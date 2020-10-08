@@ -1,6 +1,6 @@
-# What Drives Tax Assessed Home Values
+# Predicting Tax Assessed Home Values
 
-View the google slide presentation here: [**Drivers for Tax Evaluation**](https://docs.google.com/presentation/d/1iXQ85_Uw2909z45gTa-61t3AaT9-NQOsOecoUM1zLbI/edit?usp=sharing)
+View the google slide presentation here: [**Predicting Single Unit Property Value in Los Angeles Metro Area**](https://docs.google.com/presentation/d/1iXQ85_Uw2909z45gTa-61t3AaT9-NQOsOecoUM1zLbI/edit?usp=sharing)
 
 ## Description
 
