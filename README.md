@@ -132,6 +132,6 @@ The following considerations were taken with the data:
 
 ### prepare.py
 ### features.py
-* These models will perform all functions successfully without any changes needed. Each function is specific to the task developed during the data science pipeline.
+* The functions in prepare.py and features.py can be imported to another file. Each function is specific to the task developed during the data science pipeline of this project and may need to be altered to suit different purposes. 
 ### model.ipynb
 * There are several specific functions embedded in the model.ipynb. They will need to be copied to a .py file in order to be used elsewhere.
