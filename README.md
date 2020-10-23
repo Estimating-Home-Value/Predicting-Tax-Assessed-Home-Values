@@ -27,6 +27,9 @@ You wonder how you can recieve an email from the entire data science team at onc
 4. Identify strengths and weaknesses of final model.
 5. Detail recommendations for future improvement.
 
+## Executive Summary
+![executive summry](https://github.com/Yongliang-Shi/regression-exercises/blob/master/executive_summary.png)
+
 ### Specification
 #### Audience
 Your customer is the zillow data science team. state your goals as if you were delivering this to zillow. They have asked for something from you and you are basically communicating in a more concise way, and very clearly, the goals as you understand them and as you have taken and acted upon through your research.
